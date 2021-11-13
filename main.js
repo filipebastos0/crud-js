@@ -53,13 +53,20 @@ const saveClient = () => {
             phone: clientPhone,
             city: clientCity
         }
-        createClient(client)
-        updateTable()
-        closeModal()
+        const index = document.querySelector('#name').dataset.index
+        if (index == 'new'){
+            createClient(client)
+            updateTable()
+            closeModal()
+        }else {
+            updateClient(index, client)
+            updateTable()
+            closeModal()
+        }
     }
 }
 
-const createRow = (client) => {
+const createRow = (client, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
         <td>${client.name}</td>        
@@ -67,8 +74,8 @@ const createRow = (client) => {
         <td>${client.phone}</td>        
         <td>${client.city}</td>        
         <td>
-        <button type="button" class="button green" data-action="edit">Editar</button>
-        <button type="button" class="button red" data-action="delete">Excluir</button>
+        <button type="button" class="button green" data-action="edit-${index}">Editar</button>
+        <button type="button" class="button red" data-action="delete-${index}">Excluir</button>
         </td>
     `
     document.querySelector('#tableClient>tbody').appendChild(newRow)
@@ -85,9 +92,36 @@ const updateTable = () => {
     dbClient.forEach(createRow)
 }
 
+const fillFields = (client) => {
+    document.querySelector('#name').value = client.name
+    document.querySelector('#email').value = client.email
+    document.querySelector('#phone').value = client.phone
+    document.querySelector('#city').value = client.city
+    document.querySelector('#name').dataset.index = client.index
+}
+
+const editClient = (index) => {
+    const client = getLocalStorage()[index]
+    client.index = index
+    fillFields(client)
+    openModal()
+}
+
 const editDelete = (event) => {
     if (event.target.type == 'button') {
-        console.log(event.target.dataset.action)
+
+        const [action, index] = event.target.dataset.action.split('-')
+        
+        if (action == 'edit'){
+            editClient(index)
+        }else {
+            const client = getLocalStorage()[index]
+            const response = confirm (`Deseja realmente deletar o cliente ${client.name}?`)
+            if (response) {
+                deleteClient(index)
+                updateTable()
+            }
+        }
     }
 }
 
