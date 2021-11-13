@@ -15,15 +15,15 @@ body{
     min-height: 100vh;
     display: flex;    
     flex-direction: column;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande';
     position: relative;
 }
 
 header{
     background-color: var(--yellow);
-    height: 70px;
+    height: 60px;
     text-align: center;
-    line-height: 70px;
+    line-height: 60px;    
     box-shadow: 0 1px 2px var(--shadow);
 }
 
