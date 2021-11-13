@@ -54,6 +54,7 @@ const saveClient = () => {
             city: clientCity
         }
         createClient(client)
+        updateTable()
         closeModal()
     }
 }
@@ -66,8 +67,8 @@ const createRow = (client) => {
         <td>${client.phone}</td>        
         <td>${client.city}</td>        
         <td>
-        <button type="button" class="button green">Editar</button>
-        <button type="button" class="button red">Excluir</button>
+        <button type="button" class="button green" data-action="edit">Editar</button>
+        <button type="button" class="button red" data-action="delete">Excluir</button>
         </td>
     `
     document.querySelector('#tableClient>tbody').appendChild(newRow)
@@ -84,6 +85,13 @@ const updateTable = () => {
     dbClient.forEach(createRow)
 }
 
+const editDelete = (event) => {
+    if (event.target.type == 'button') {
+        console.log(event.target.dataset.action)
+    }
+}
+
+
 updateTable()
 
 
@@ -94,3 +102,5 @@ document.querySelector('#modal-close').addEventListener('click', closeModal)
 document.querySelector('#cancel').addEventListener('click', closeModal)
 
 document.querySelector('#save').addEventListener('click', saveClient)
+
+document.querySelector('#tableClient>tbody').addEventListener('click', editDelete)
