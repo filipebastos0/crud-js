@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="styles/main.css">
+    <title>CRUD JS</title>
+</head>
+<body>
+
+    <header>
+        <h1 class="header-title">Cadastro de Clientes</h1>
+    </header>
+
+    <main>
+
+        <button type="button" class="button blue mobile" id="cadastrarCliente">Cadastrar Cliente</button>
+
+        <table class="records">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Celular</th>
+                    <th>Cidade</th>
+                    <th>Ação</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Maria</td>
+                    <td>maria@gmail</td>
+                    <td>(11) 98875-5986</td>
+                    <td>Jundiai</td>
+                    <td>
+                        <button type="button" class="button green">Editar</button>
+                        <button type="button" class="button red">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Eduardo</td>
+                    <td>eduardo@gmail.com</td>
+                    <td>(11) 98875-5986</td>
+                    <td>Sao Paulo</td>
+                    <td>
+                        <button type="button" class="button green">Editar</button>
+                        <button type="button" class="button red">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Luca</td>
+                    <td>luca@gmail.com</td>
+                    <td>(11) 98875-5986</td>
+                    <td>Jandira</td>
+                    <td>
+                        <button type="button" class="button green">Editar</button>
+                        <button type="button" class="button red">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Novo Cliente</h2>
+                    <span class="fechar-modal" id="fecharModal">&#10006;</span>
+                </header>
+                <form class="modal-form">
+                    <input type="text" class="modal-field" placeholder="Nome do Cliente">
+                    <input type="email" class="modal-field" placeholder="E-mail">
+                    <input type="text" class="modal-field" placeholder="Número de celular">
+                    <input type="text" class="modal-field" placeholder="Cidade">
+                </form>
+                <footer class="modal-footer">
+                    <button type="button" class="button green">Salvar</button>
+                    <button type="button" class="button blue"></button>
+                </footer>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        Copyright &copy; Nobody
+    </footer>
+    
+
+    <script src="main.js"></script>
+</body>
+</html>
